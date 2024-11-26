@@ -32,7 +32,7 @@ class searchController extends Controller
             }
         } catch (\Throwable $th) {
             return redirect()->route('welcome')->with([
-                'error' => 'QR invalido',
+                'error' => 'QR inválido',
                 'destination' => ''
             ]);
         }
