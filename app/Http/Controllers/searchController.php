@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class searchController extends Controller
 {
     public function search(Request $request){
-        $cin = $request->cin;
+        $cin = $request->input('cin');
 
         $path = 'funcionarios.json';
 

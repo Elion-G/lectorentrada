@@ -16,7 +16,7 @@
         <form action="buscar-funcionario" method="POST">
             @csrf
 
-            <input type="text" name="CIN">
+            <input type="text" name="cin">
 
             <button type="submit">Hola</button>
 
