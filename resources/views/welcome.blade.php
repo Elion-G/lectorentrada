@@ -18,7 +18,7 @@
                 
             </h1>
             <div class="w-100" id="videoContainer">
-                <video id="videoElement" autoplay class="w-100"></video>
+                <div id="videoElement" class="w-100"></div>
             </div>
         </div>
 
