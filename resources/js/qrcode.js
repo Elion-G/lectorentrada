@@ -52,6 +52,21 @@ window.addEventListener('DOMContentLoaded', () => {
                         }).showToast();
                 },
                 error: function(xhr, status, error){
+                    Toastify({
+                        text: "Error",
+                        duration: 3000,
+                        destination: "",
+                        newWindow: true,
+                        close: true,
+                        gravity: "bottom",
+                        position: "right",
+                        stopOnFocus: true,
+                        style: {
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        fontSize: "1.3rem"
+                        },
+                        onClick: function(){}
+                    }).showToast();
                     console.log(xhr);
                     console.log(status);
                     console.log(error);
