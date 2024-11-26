@@ -30,7 +30,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
                 },
-                data: JSON.stringify({ CIN: decodeText }),
+                data: JSON.stringify(
+                    { 'CIN': decodeText }
+                ),
                 contentType: 'application/json',
                 success: function(response){
                     if (response.success) {

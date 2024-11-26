@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::post('/buscar-funcionario', function (Request $request) {
-    $cin = $request->input('CIN');
+    $cin = $request->CIN;
 
     $path = 'funcionarios.json';
 
