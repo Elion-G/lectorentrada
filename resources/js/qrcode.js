@@ -17,85 +17,17 @@ import {Html5QrcodeScanner} from "html5-qrcode";
 
 window.addEventListener('DOMContentLoaded', () => {
     var lastResult, countResults = 0;
-    const h1Elem = document.getElementById('h1Element');
+    const formElement = document.querySelector('form[action="buscar-funcionario"]');
+    const cinInput = formElement.querySelector('input[name="cin"]');
 
     function onScanSuccess(decodeText, decodeResult) {
         if (decodeText !== lastResult) {
             lastResult = decodeText;
 
-            $.ajax({
-                url: '/buscar-funcionario',
-                type: 'POST',
-                timeout:-1,
-                headers: {
-                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
-                },
-                data: JSON.stringify(
-                    { 'cin': decodeText }
-                ),
-                contentType: 'application/json',
-                success: function(response){
-                    if (response.success) {
+            cinInput.value = decodeText;
 
-                        h1Elem.innerHTML = "Bienvenido " + response.message;
+            formElement.submit();
 
-                        Toastify({
-                            text: "Bienvenido " + response.message,
-                            duration: 3000,
-                            destination: "",
-                            newWindow: true,
-                            close: true,
-                            gravity: "bottom",
-                            position: "right",
-                            stopOnFocus: true,
-                            style: {
-                                background: "linear-gradient(to right, #00b09b, #96c93d)",
-                                fontSize: "1.3rem"
-                            },
-                            onClick: function() {}
-                        }).showToast();
-                    } else {
-
-                        h1Elem.innerHTML = response.message || "Ocurrió un error";
-
-                        Toastify({
-                            text: response.message || "Ocurrió un error",
-                            duration: 3000,
-                            destination: "",
-                            newWindow: true,
-                            close: true,
-                            gravity: "bottom",
-                            position: "right",
-                            stopOnFocus: true,
-                            style: {
-                                background: "linear-gradient(to right, #ff5f6d, #ffc371)",
-                                fontSize: "1.3rem"
-                            },
-                            onClick: function() {}
-                        }).showToast();
-                    }
-                },
-                error: function(xhr, status, error){
-                    Toastify({
-                        text: "Error",
-                        duration: 3000,
-                        destination: "",
-                        newWindow: true,
-                        close: true,
-                        gravity: "bottom",
-                        position: "right",
-                        stopOnFocus: true,
-                        style: {
-                        background: "linear-gradient(to right, #00b09b, #96c93d)",
-                        fontSize: "1.3rem"
-                        },
-                        onClick: function(){}
-                    }).showToast();
-                    console.log(xhr);
-                    console.log(status);
-                    console.log(error);
-                }
-            });
         }
     }
 

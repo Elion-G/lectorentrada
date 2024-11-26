@@ -23,12 +23,10 @@ class searchController extends Controller
 
         $funcionario = collect($funcionarios)->firstWhere('CIN', $cin);
 
+        $nombre = $funcionario['Nombre'];
+
         if ($funcionario) {
-            return response()->json([
-                'success' => true,
-                'message' => $funcionario['Nombre'],
-                'data' => $funcionario,
-            ]);
+            return view('bienvenido', compact('nombre'));
         }
 
         return response()->json([
