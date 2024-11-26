@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const qrScanner = new QrScanner(
         videoElem,
         result => h1Elem.innerHTML = result,
-        { calculateScanRegion: true, returnDetailedScanResult: true }
+        { 'returnDetailedScanResult': true }
     );
 
     qrScanner.start();
