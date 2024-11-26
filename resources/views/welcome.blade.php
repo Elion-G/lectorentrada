@@ -19,6 +19,8 @@
 
         </form>
 
+        <img src="file:///C:/Users/elias.gonzalez/Desktop/funcionarios/7913.jpg" alt="">
+
         <div class="mt-5 container d-flex flex-column align-items-center vh-100">
             <div class="w-100" id="videoContainer">
                 <div id="videoElement" class="w-100"></div>
@@ -27,6 +29,48 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+        @if (session('success'))
+            <script>
+                addEventListener("load", () => {
+                    Toastify({
+                        text: "{{ session('success') }}",
+                        duration: 3000,
+                        destination: "{{ session('destination') }}",
+                        newWindow: true,
+                        close: true,
+                        gravity: 'bottom',
+                        position: 'right',
+                        stopOnFocus: true,
+                        style: {
+                            background: 'linear-gradient(to right, #00b09b, #96c93d)',
+                        },
+                        onClick: function() {}
+                    }).showToast();
+                });
+            </script>
+        @endif
+
+        @if (session('error'))
+            <script>
+                window.addEventListener('load', () => {
+                    Toastify({
+                        text: "{{ session('error') }}",
+                        duration: 3000,
+                        destination: "",
+                        newWindow: true,
+                        close: true,
+                        gravity: "bottom",
+                        position: "right",
+                        stopOnFocus: false,
+                        style: {
+                            background: "linear-gradient(to right, #ff0000, #ffd700)",
+                        },
+                        onClick: function(){}
+                    }).showToast();
+                })
+            </script>
+        @endif
 
     </body>
 </html>
