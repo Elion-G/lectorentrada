@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const qrScanner = new QrScanner(
         videoElem,
         result => console.log('decoded qr code:', result),
-        {},
+        {calculateScanRegion},
     );
 
     qrScanner.start();
