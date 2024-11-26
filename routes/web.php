@@ -35,5 +35,5 @@ Route::post('/buscar-funcionario', function (Request $request) {
     return response()->json([
         'success' => false,
         'message' => "Funcionario no encontrado",
-    ]);
+    ], 500);
 });
