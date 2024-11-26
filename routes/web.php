@@ -27,7 +27,7 @@ Route::post('/buscar-funcionario', function (Request $request) {
     if ($funcionario) {
         return response()->json([
             'success' => true,
-            'message' => "Bienvenido {$funcionario['Nombre']}",
+            'message' => $funcionario['Nombre'],
             'data' => $funcionario,
         ]);
     }

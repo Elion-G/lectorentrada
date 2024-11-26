@@ -35,22 +35,56 @@ window.addEventListener('DOMContentLoaded', () => {
                 data: JSON.stringify({ CIN: decodeText }),
                 contentType: 'application/json',
                 success: function(response){
-                    Toastify({
-                        text: "This is a toast",
-                        className: "info",
-                        style: {
-                          background: "linear-gradient(to right, #00b09b, #96c93d)",
-                        }
-                      }).showToast();
+                    if (response.success) {
+                        Toastify({
+                            text: "Bienvenido " + response.message,
+                            duration: 3000,
+                            destination: "",
+                            newWindow: true,
+                            close: true,
+                            gravity: "bottom",
+                            position: "right",
+                            stopOnFocus: true,
+                            style: {
+                                background: "linear-gradient(to right, #00b09b, #96c93d)",
+                                fontSize: "1.3rem"
+                            },
+                            onClick: function() {}
+                        }).showToast();
+                    } else {
+                        Toastify({
+                            text: response.message || "Ocurrió un error",
+                            duration: 3000,
+                            destination: "",
+                            newWindow: true,
+                            close: true,
+                            gravity: "bottom",
+                            position: "right",
+                            stopOnFocus: true,
+                            style: {
+                                background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                                fontSize: "1.3rem"
+                            },
+                            onClick: function() {}
+                        }).showToast();
+                    }
                 },
                 error: function(xhr, status, error){
                     Toastify({
-                        text: "This is a toastssasdasd",
-                        className: "info",
+                        text: "Error",
+                        duration: 3000,
+                        destination: "",
+                        newWindow: true,
+                        close: true,
+                        gravity: "bottom",
+                        position: "right",
+                        stopOnFocus: true,
                         style: {
-                          background: "linear-gradient(to right, #00b09b, #96c93d)",
-                        }
-                      }).showToast();
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        fontSize: "1.3rem"
+                        },
+                        onClick: function(){}
+                    }).showToast();
                     console.log(xhr);
                     console.log(status);
                     console.log(error);
@@ -60,7 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     var html5Scanner = new Html5QrcodeScanner(
-        "videoElement", { fps:20, qrbox:750, rememberLastUsedCamera: true }
+        "videoElement", { fps:10, qrbox:250, rememberLastUsedCamera: true }
     )
 
     html5Scanner.render(onScanSuccess);
