@@ -35,38 +35,22 @@ window.addEventListener('DOMContentLoaded', () => {
                 data: JSON.stringify({ CIN: decodeText }),
                 contentType: 'application/json',
                 success: function(response){
-                        Toastify({
-                            text: "Bienvenido " + response.success,
-                            duration: 3000,
-                            destination: "",
-                            newWindow: true,
-                            close: true,
-                            gravity: "bottom",
-                            position: "right",
-                            stopOnFocus: true,
-                            style: {
-                            background: "linear-gradient(to right, #00b09b, #96c93d)",
-                            fontSize: "1.3rem"
-                            },
-                            onClick: function(){}
-                        }).showToast();
+                    Toastify({
+                        text: "This is a toast",
+                        className: "info",
+                        style: {
+                          background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        }
+                      }).showToast();
                 },
                 error: function(xhr, status, error){
                     Toastify({
-                        text: "Error",
-                        duration: 3000,
-                        destination: "",
-                        newWindow: true,
-                        close: true,
-                        gravity: "bottom",
-                        position: "right",
-                        stopOnFocus: true,
+                        text: "This is a toastssasdasd",
+                        className: "info",
                         style: {
-                        background: "linear-gradient(to right, #00b09b, #96c93d)",
-                        fontSize: "1.3rem"
-                        },
-                        onClick: function(){}
-                    }).showToast();
+                          background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        }
+                      }).showToast();
                     console.log(xhr);
                     console.log(status);
                     console.log(error);
