@@ -1,18 +1,3 @@
-// import QrScanner from 'qr-scanner';
-
-// window.addEventListener('DOMContentLoaded', () => {
-//     const videoElem = document.getElementById('videoElement');
-//     const h1Elem = document.getElementById('h1Element');
-
-//     const qrScanner = new QrScanner(
-//         videoElem,
-//         result => h1Elem.innerHTML = result,
-//         { 'returnDetailedScanResult': true }
-//     );
-
-//     qrScanner.start();
-// });
-
 import {Html5QrcodeScanner} from "html5-qrcode";
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     var html5Scanner = new Html5QrcodeScanner(
-        "videoElement", { fps:10, qrbox:550, rememberLastUsedCamera: true }
+        "videoElement", { fps:10, qrbox:500, rememberLastUsedCamera: true }
     )
 
     html5Scanner.render(onScanSuccess);
