@@ -6,14 +6,41 @@
 
         <title>FFA</title>
 
-        @vite(['resources/js/qrcode.js'])
+        {{-- @vite(['resources/js/qrcode.js']) --}}
     </head>
     <body>
         
         <h1 id="h1Element">
             Default
         </h1>
-        <video id="videoElement"></video>
+        <div id="videoElement" style="width: 500px;">
+
+        </div>
+
+        <script src="https://unpkg.com/html5-qrcode"></script>
+
+        <script>
+
+            var lastResult, countResults = 0;
+            const videoElem = document.getElementById('videoElement');
+            const h1Elem = document.getElementById('h1Element');
+
+            function onScanSuccess(decodeText, decodeResult) {
+                if (decodeText !== lastResult) {
+                    ++countResults;
+                    lastResult = decodeText
+
+                    h1Elem.innerHTML = decodeText;
+
+                }
+            }
+
+            var html5Scanner = new Html5QrcodeScanner(
+                "videoElement", { fps:10, qrbox:250 }
+            )
+
+            html5Scanner.render(onScanSuccess);
+        </script>
 
     </body>
 </html>
