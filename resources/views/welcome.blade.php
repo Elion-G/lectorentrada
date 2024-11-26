@@ -10,6 +10,9 @@
     </head>
     <body>
         
+        <h1 id="h1Element">
+            Default
+        </h1>
         <video id="videoElement"></video>
 
     </body>
