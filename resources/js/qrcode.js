@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 contentType: 'application/json',
                 success: function(response){
                         Toastify({
-                            text: "Bienvenido",
+                            text: "Bienvenido " + response.success,
                             duration: 3000,
                             destination: "",
                             newWindow: true,

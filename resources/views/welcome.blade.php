@@ -12,6 +12,15 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     </head>
     <body>
+        
+        <form action="buscar-funcionario" method="POST">
+            @csrf
+
+            <input type="text" name="CIN">
+
+            <button type="submit">Hola</button>
+
+        </form>
 
         <div class="mt-5 container d-flex flex-column align-items-center vh-100">
             <h1 id="h1Element" class="text-center mb-4">

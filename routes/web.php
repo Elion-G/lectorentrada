@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,7 +11,15 @@ Route::get('/', function () {
 Route::post('/buscar-funcionario', function (Request $request) {
     $cin = $request->input('CIN');
 
-    $path = 'public/funcionarios.json';
+    $path = 'funcionarios.json';
+
+    if (!Storage::exists($path)) {
+        return response()->json([
+            'success' => false,
+            'message' => "Archivo no encontrado",
+        ]);
+    }
+
     $funcionarios = json_decode(Storage::get($path), true);
 
     $funcionario = collect($funcionarios)->firstWhere('CIN', $cin);
@@ -22,10 +30,10 @@ Route::post('/buscar-funcionario', function (Request $request) {
             'message' => "Bienvenido {$funcionario['Nombre']}",
             'data' => $funcionario,
         ]);
-    } else {
-        return response()->json([
-            'success' => false,
-            'message' => "Funcionario no encontrado",
-        ]);
     }
+
+    return response()->json([
+        'success' => false,
+        'message' => "Funcionario no encontrado",
+    ]);
 });
