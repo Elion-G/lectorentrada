@@ -23,8 +23,6 @@ window.addEventListener('DOMContentLoaded', () => {
         if (decodeText !== lastResult) {
             lastResult = decodeText;
 
-            h1Elem.innerHTML = decodeText;
-
             $.ajax({
                 url: '/buscar-funcionario',
                 type: 'POST',
@@ -36,6 +34,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 contentType: 'application/json',
                 success: function(response){
                     if (response.success) {
+
+                        h1Elem.innerHTML = "Bienvenido " + response.message;
+
                         Toastify({
                             text: "Bienvenido " + response.message,
                             duration: 3000,
