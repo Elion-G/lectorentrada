@@ -55,6 +55,9 @@ window.addEventListener('DOMContentLoaded', () => {
                             onClick: function() {}
                         }).showToast();
                     } else {
+
+                        h1Elem.innerHTML = response.message || "Ocurrió un error";
+
                         Toastify({
                             text: response.message || "Ocurrió un error",
                             duration: 3000,
