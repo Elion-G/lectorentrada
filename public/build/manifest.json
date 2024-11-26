@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-DwGP9keY.css",
+    "file": "assets/app-o1JvpuIE.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -11,7 +11,7 @@
     "isEntry": true
   },
   "resources/js/qrcode.js": {
-    "file": "assets/qrcode-C6LCe2PZ.js",
+    "file": "assets/qrcode-Bg97-Uke.js",
     "name": "qrcode",
     "src": "resources/js/qrcode.js",
     "isEntry": true

@@ -25,59 +25,38 @@ window.addEventListener('DOMContentLoaded', () => {
 
             h1Elem.innerHTML = decodeText;
 
-            fetch('/buscar-funcionario', {
-                method: 'POST',
+            $.ajax({
+                url: '/buscar-funcionario',
+                type: 'POST',
+                timeout:-1,
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
                 },
-                body: JSON.stringify({ CIN: decodeText })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Toastify({
-                        text: data.message,
-                        duration: 3000,
-                        gravity: "bottom",
-                        position: "right",
-                        style: {
+                data: JSON.stringify({ CIN: decodeText }),
+                contentType: 'application/json',
+                success: function(response){
+                        Toastify({
+                            text: "Bienvenido",
+                            duration: 3000,
+                            destination: "",
+                            newWindow: true,
+                            close: true,
+                            gravity: "bottom",
+                            position: "right",
+                            stopOnFocus: true,
+                            style: {
                             background: "linear-gradient(to right, #00b09b, #96c93d)",
                             fontSize: "1.3rem"
-                        }
-                    }).showToast();
-                } else {
-                    Toastify({
-                        text: data.message,
-                        duration: 3000,
-                        gravity: "bottom",
-                        position: "right",
-                        style: {
-                            background: "linear-gradient(to right, #ff5f6d, #ffc371)",
-                            fontSize: "1.3rem"
-                        }
-                    }).showToast();
+                            },
+                            onClick: function(){}
+                        }).showToast();
+                },
+                error: function(xhr, status, error){
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
             });
-
-            // Toastify({
-            //     text: "Bienvenido",
-            //     duration: 3000,
-            //     destination: "",
-            //     newWindow: true,
-            //     close: true,
-            //     gravity: "bottom",
-            //     position: "right",
-            //     stopOnFocus: true,
-            //     style: {
-            //       background: "linear-gradient(to right, #00b09b, #96c93d)",
-            //       fontSize: "1.3rem"
-            //     },
-            //     onClick: function(){}
-            //   }).showToast();
         }
     }
 
