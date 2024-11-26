@@ -13,12 +13,12 @@
     </head>
     <body>
 
-        <div class="mt-5 container d-flex align-items-center align-content-center">
-            <h1 id="h1Element">
-                Default
+        <div class="mt-5 container d-flex flex-column align-items-center vh-100">
+            <h1 id="h1Element" class="text-center mb-4">
+                
             </h1>
-            <div class="w-100" id="videoElement">
-    
+            <div class="w-100" id="videoContainer">
+                <video id="videoElement" autoplay class="w-100"></video>
             </div>
         </div>
 
