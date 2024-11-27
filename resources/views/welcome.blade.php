@@ -7,7 +7,7 @@
 
         <title>FFA</title>
 
-        @vite(['resources/js/qrcode.js'])
+        @vite(['resources/css/style.css', 'resources/js/qrcode.js'])
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     </head>
@@ -21,7 +21,7 @@
 
         <img src="file:///C:/Users/elias.gonzalez/Desktop/funcionarios/7913.jpg" alt="">
 
-        <div class="mt-5 container d-flex flex-column align-items-center vh-100">
+        <div class="mt-5 container d-flex flex-column align-items-center">
             <div class="w-100" id="videoContainer">
                 <div id="videoElement" class="w-100"></div>
             </div>
