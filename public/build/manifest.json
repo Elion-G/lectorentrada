@@ -1,7 +1,16 @@
 {
+  "public/img/fondo_vertical.jpg": {
+    "file": "assets/fondo_vertical-DtXEi7cv.jpg",
+    "src": "public/img/fondo_vertical.jpg"
+  },
   "resources/css/app.css": {
     "file": "assets/app-DfIjQ0WI.css",
     "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/style.css": {
+    "file": "assets/style-DTC2434S.css",
+    "src": "resources/css/style.css",
     "isEntry": true
   },
   "resources/js/app.js": {
