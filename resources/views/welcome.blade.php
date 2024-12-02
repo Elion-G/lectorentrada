@@ -71,7 +71,7 @@
             </h2>
 
             <div class=" text-center justify-content-center">
-                <img class="imagen-logo" width="150" src="{{ asset('/lectorffa/img/logo_nissei.png') }}" alt="">
+                <img class="imagen-logo" width="150" src="/lectorffa/img/logo_nissei.png" alt="">
             </div>
         </div>
 
@@ -93,7 +93,7 @@
             </h2>
 
             <div class=" text-center justify-content-center">
-                <img class="imagen-logo" width="150" src="{{ asset('/lectorffa/img/logo_nissei.png') }}" alt="">
+                <img class="imagen-logo" width="150" src="/lectorffa/img/logo_nissei.png" alt="">
             </div>
         </div>
 
