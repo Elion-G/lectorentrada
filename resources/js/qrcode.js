@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
     async function sendRequest(cin) {
         try {
 
-            alert(cin);
+            alert(JSON.stringify({ "cin" : cin }));
 
             const data = await new Promise((resolve, reject) => {
                 $.ajax({
