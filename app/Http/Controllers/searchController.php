@@ -11,6 +11,12 @@ class searchController extends Controller
         try {
             $cin = $request->input('cin');
 
+            return response()->json([
+                'success' => true,
+                'nombre' => 'ElinGon',
+                'cedula' => $cin,
+            ]);
+
             $path = 'funcionarios.json';
 
             if (!Storage::exists($path)) {
@@ -23,12 +29,6 @@ class searchController extends Controller
             $funcionarios = json_decode(Storage::get($path), true);
 
             $funcionario = collect($funcionarios)->firstWhere('CIN', $cin);
-
-            return response()->json([
-                'success' => true,
-                'nombre' => $funcionario,
-                'cedula' => $cin,
-            ]);
 
             $nombre = $funcionario['Nombre'];
             $cedula = $cin;

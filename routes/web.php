@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/buscar-funcionario', [searchController::class, 'search'])->name('search');
+Route::post('/buscar-funcionario', [searchController::class, 'search'])->name('search');
 Route::get('/bienvenido', function (){
     return view('bienvenido');
 })->name('search');
