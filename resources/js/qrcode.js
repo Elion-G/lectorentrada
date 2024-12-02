@@ -42,6 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
 
             alert(JSON.stringify({ "cin" : cin }));
+            alert($('meta[name="csrf-token"]').attr('content'));
 
             const data = await new Promise((resolve, reject) => {
                 $.ajax({
@@ -49,9 +50,9 @@ window.addEventListener('DOMContentLoaded', () => {
                     method: "GET",
                     timeout: -1,
                     headers: {
-                        "Content-Type": "application/json",
                         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
                     },
+                    contentType: 'application/json',
                     data: JSON.stringify({ "cin" : cin }),
                     success: resolve,
                     error: (xhr, status, error) => reject(new Error(`Error: ${status}, ${error}`))
