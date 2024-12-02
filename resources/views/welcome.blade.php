@@ -59,7 +59,7 @@
 
         <div id="info-funcionario" class="mt-2 container flex-column justify-content-center align-items-center vw-100 d-none">
             <h1 class="h1-block text-danger">
-                <img id="imagen-funcionario" src="" alt="" width="150" height="auto">
+                <img id="imagen-funcionario" src="" alt="" width="200" height="auto">
             </h1>
 
             <h1 id="nombre-funcionario" class="text-center text-danger mb-4">
@@ -71,7 +71,7 @@
             </h2>
 
             <div class=" text-center justify-content-center">
-                <img class="imagen-logo" width="150" src="{{ asset('/img/logo_nissei.png') }}" alt="">
+                <img class="imagen-logo" width="150" src="{{ asset('/lectorffa/img/logo_nissei.png') }}" alt="">
             </div>
         </div>
 
@@ -93,7 +93,7 @@
             </h2>
 
             <div class=" text-center justify-content-center">
-                <img class="imagen-logo" width="150" src="{{ asset('/img/logo_nissei.png') }}" alt="">
+                <img class="imagen-logo" width="150" src="{{ asset('/lectorffa/img/logo_nissei.png') }}" alt="">
             </div>
         </div>
 
