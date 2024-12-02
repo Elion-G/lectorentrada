@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div id="info-ingresado" class="container flex-column justify-content-center align-items-center vw-100 d-none">
+        <div id="info-ingresado" class="mt-5 container flex-column justify-content-center align-items-center vw-100 d-none">
             <h1 class="h1-block text-danger">
                 <i class="bi bi-ban"></i>
             </h1>
@@ -88,6 +88,10 @@
             <h2 id="cedula-ingresado" class="text-center w-100">
                 
             </h2>
+
+            <div class=" text-center justify-content-center">
+                <img class="imagen-logo" width="150" src="{{ asset('/img/logo_nissei.png') }}" alt="">
+            </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
