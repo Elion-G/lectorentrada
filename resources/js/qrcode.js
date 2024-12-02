@@ -11,46 +11,56 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //         cinInput.value = decodeText;
 
-    //         $.ajax({
-    //             url: '/buscar-funcionario',
-    //             type: 'POST',
-    //             timeout:-1,
-    //             headers: {
-    //                 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
-    //             },
-    //             data: JSON.stringify(
-    //                 {
-    //                     'cin' : cinInput.value
-    //                 }
-    //             ),
-    //             contentType: 'application/json',
-    //             success: function(response){
-    //                 alert(response);
-    //             },
-    //             error: function(xhr, status, error){
-    //                 console.log(xhr);
-    //                 alert(status);
-    //                 console.log(error);
-    //             }
-    //         });
+            // $.ajax({
+            //     url: '/buscar-funcionario',
+            //     type: 'POST',
+            //     timeout:-1,
+            //     headers: {
+            //         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
+            //     },
+            //     data: JSON.stringify(
+            //         {
+            //             'cin' : cinInput.value
+            //         }
+            //     ),
+            //     contentType: 'application/json',
+            //     success: function(response){
+            //         alert(response);
+            //     },
+            //     error: function(xhr, status, error){
+            //         console.log(xhr);
+            //         alert(status);
+            //         console.log(error);
+            //     }
+            // });
 
     //     }
     // }
 
     async function sendRequest(cin) {
         try {
-            const response = await fetch('/buscar-funcionario', {
-                method: 'POST',
+            const response = $.ajax({
+                url: '/buscar-funcionario',
+                type: 'POST',
+                timeout:-1,
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
                 },
-                body: JSON.stringify({ 'cin' : cin })
+                data: JSON.stringify(
+                    {
+                        'cin' : cin
+                    }
+                ),
+                contentType: 'application/json',
+                success: function(response){
+                    alert(response);
+                },
+                error: function(xhr, status, error){
+                    console.log(xhr);
+                    alert(status);
+                    console.log(error);
+                }
             });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
 
             const data = await response.json();
             return data;
@@ -68,6 +78,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
             // Realiza la solicitud POST usando async/await
             const response = await sendRequest(cinInput.value);
+
+            alert(response);
 
             if (response) {
                 if (response.success) {
