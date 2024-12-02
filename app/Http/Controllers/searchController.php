@@ -20,18 +20,18 @@ class searchController extends Controller
                 ]);
             }
 
-            return response()->json([
-                'success' => true,
-                'nombre' => 'ElinGon',
-                'cedula' => '123456',
-            ]);
-
             $funcionarios = json_decode(Storage::get($path), true);
 
             $funcionario = collect($funcionarios)->firstWhere('CIN', $cin);
 
             $nombre = $funcionario['Nombre'];
             $cedula = $cin;
+
+            return response()->json([
+                'success' => true,
+                'nombre' => 'ElinGon',
+                'cedula' => '123456',
+            ]);
 
             // Verificar si se encontró el funcionario
             if ($funcionario) {
