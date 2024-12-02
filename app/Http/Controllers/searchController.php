@@ -30,11 +30,15 @@ class searchController extends Controller
             // Verificar si se encontró el funcionario
             if ($funcionario) {
                 $nombre = $funcionario['Nombre'];
+                $apellido = $funcionario['Apellido'];
+
+                $nombre_completo = $nombre . ' ' . $apellido;
+
                 $cedula = $cin;
 
                 return response()->json([
                     'success' => true,
-                    'nombre' => $nombre,
+                    'nombre' => $nombre_completo,
                     'cedula' => $cedula,
                 ]);
             }
