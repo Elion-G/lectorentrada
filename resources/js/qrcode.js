@@ -42,17 +42,12 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
 
             alert(JSON.stringify({ "cin" : cin }));
-            const tokenn = $('meta[name="csrf-token"]').attr('content');
-            alert(tokenn);
 
             const data = await new Promise((resolve, reject) => {
                 $.ajax({
                     url: "/buscar-funcionario",
                     method: "GET",
                     timeout: -1,
-                    headers: {
-                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-                    },
                     contentType: 'application/json',
                     data: JSON.stringify({ "cin" : cin }),
                     success: resolve,
