@@ -42,11 +42,11 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             const data = await new Promise((resolve, reject) => {
                 $.ajax({
-                    url: "http://lectorentrada.test/buscar-funcionario",
+                    url: "/buscar-funcionario",
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "Cookie": "XSRF-TOKEN=eyJpdiI6Ii9ndUJTTkZVWmttV2drUVB4LzFtS2c9PSIsInZhbHVlIjoiSjZKZktqdElMQ0ZWQ2xWS01NL0h0blBrOXBGby9MQjB4V0kwYXMxRlZVOXI2cS9tdmVqNXRWaFhjR09QbmNrcTg3R0JVV1VxK3FxeDRwWVhzZFN5aXNZNUpPOEg0RWJFVG5oeExnb21DcFpBaWsrRGNiRStWOHY0djJvOGF0SmEiLCJtYWMiOiIwMWI4ZWE1MGMwMGU0ZTE2Nzg2ZWE1ZDU2YTUzYzQ4YzNjNDI5ZTNlOTJmY2U3ZmZjYWRjYmRhMDE2N2RiYjg1IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6Im1ab1BxR2FBWEt0VzBuWWhqTUxQUWc9PSIsInZhbHVlIjoiR0htaVVUdEVRQ0V4bkdyN1BZMWVvN3hNNHNkNm5OMU9PL3pJdXRBWFJjckVUUm9jYnVkSU1aUWVIbDFxWnBIWkJubEIzZmpWRHhWY1h1Q1B0ek1EV0Q2WlE1bTNBSEtlaEFPeFJNYUJ1NjhOclpwdkJXL3M4dnFDbk9pQXBCTG4iLCJtYWMiOiI0OTE5YzM5OWEyNmRlOGQ1OGJmM2Y0NmUzZWFkMjZmMjM0MzYwZWM0NTdmNjM4MzkyYjBiMmY4OWI2OWEyYTgxIiwidGFnIjoiIn0%3D"
+                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
                     },
                     data: JSON.stringify({ "cin" : cin }),
                     success: resolve,
