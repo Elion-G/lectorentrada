@@ -71,29 +71,29 @@
             </h2>
 
             <div class=" text-center justify-content-center">
-                <img class="imagen-logo" width="150" src="/lectorffa/img/logo_nissei.png" alt="">
+                <img class="imagen-logo" width="150" src="/lectorffa/img/LogoNisseiSinSlogan.png" alt="">
             </div>
         </div>
 
         <div id="info-ingresado" class="bg-danger mt-2 container flex-column justify-content-center align-items-center vw-100 d-none">
-            <h1 class="h1-block">
+            <h1 class="h1-block text-white">
                 <i class="bi bi-ban"></i>
             </h1>
 
-            <h1 id="nombre-ingresado" class="text-center w-100">
+            <h1 id="nombre-ingresado" class="text-center w-100 text-white">
                 
             </h1>
 
-            <h1 id="mensaje-ingresado" class="text-center mb-5 w-100">
+            <h1 id="mensaje-ingresado" class="text-center mb-5 w-100 text-white">
                 Ya ingresó
             </h1>
 
-            <h2 id="cedula-ingresado" class="text-center w-100">
+            <h2 id="cedula-ingresado" class="text-center w-100 text-white">
                 
             </h2>
 
             <div class=" text-center justify-content-center">
-                <img class="imagen-logo" width="150" src="/lectorffa/img/logo_nissei.png" alt="">
+                <img class="imagen-logo" width="150" src="/lectorffa/img/LogoNisseiSinSlogan.png" alt="">
             </div>
         </div>
 
