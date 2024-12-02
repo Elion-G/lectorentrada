@@ -42,7 +42,8 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
 
             alert(JSON.stringify({ "cin" : cin }));
-            alert($('meta[name="csrf-token"]').attr('content'));
+            const tokenn = $('meta[name="csrf-token"]').attr('content');
+            alert(tokenn);
 
             const data = await new Promise((resolve, reject) => {
                 $.ajax({
