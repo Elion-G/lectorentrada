@@ -9,8 +9,6 @@ window.addEventListener('DOMContentLoaded', () => {
     async function sendRequest(cin) {
         try {
 
-            alert(JSON.stringify({ "cin" : cin }));
-
             const data = await new Promise((resolve, reject) => {
                 $.ajax({
                     url: "/lectorffa/buscar-funcionario",
@@ -40,9 +38,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function cambioDeEstado() {
+    function cambioDeEstado(nombre, cedula) {
         const infoContainer = document.getElementById('info-funcionario');
         const videoContainer = document.getElementById('video-container');
+        const nombreFuncionario = document.getElementById('nombre-funcionario');
+        const cedulaFuncionario = document.getElementById('cedula-funcionario');
+
+        nombreFuncionario.innerHTML = nombre;
+        cedulaFuncionario.innerHTML = cedula;
 
         infoContainer.classList.remove('d-none');
         infoContainer.classList.add('d-flex');
@@ -57,7 +60,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
             videoContainer.classList.remove('d-none');
             videoContainer.classList.add('d-flex');
-        }, 8000);
+
+            nombreFuncionario.innerHTML = '';
+            cedulaFuncionario.innerHTML = '';
+        }, 5000);
     }
 
     async function onScanSuccess(decodeText, decodeResult) {
@@ -70,9 +76,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
                 if (response && response.success) {
 
-                    alert(`Respuesta JSON recibida:\n${JSON.stringify(response, null, 2)}`);
-
-                    cambioDeEstado();
+                    cambioDeEstado(response.nombre, response.cedula);
 
                 } else {
                     alert(response?.message || 'No se encontró la persona.');
