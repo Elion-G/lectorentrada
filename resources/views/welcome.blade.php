@@ -41,6 +41,13 @@
 
     </head>
     <body>
+        
+        <form action="buscar-funcionario" method="POST">
+            @csrf
+            <input type="hidden" name="cin">
+
+        </form>
+
         <div id="video-container" class="mt-5 container flex-column align-items-center d-flex">
             <div class="w-100" id="videoContainer">
                 <div id="videoElement" class="w-100"></div>
