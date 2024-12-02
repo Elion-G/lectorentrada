@@ -54,9 +54,18 @@ window.addEventListener('DOMContentLoaded', () => {
                         'X-CSRF-TOKEN' : tokenn
                     },
                     contentType: 'application/json',
-                    data: JSON.stringify({ "cin" : cin }),
-                    success: resolve,
-                    error: (xhr, status, error) => reject(new Error(`Error: ${status}, ${error}`))
+                    data: JSON.stringify({ cin }),
+                    success: (response) => {
+                        // Si el servidor devuelve un string en lugar de JSON
+                        if (typeof response === 'string') {
+                            resolve(JSON.parse(response));
+                        } else {
+                            resolve(response);
+                        }
+                    },
+                    error: (xhr, status, error) => {
+                        reject(new Error(`Error: ${status}, ${error}`));
+                    }
                 });
             });
             return data;
