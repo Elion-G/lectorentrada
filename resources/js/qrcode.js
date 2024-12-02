@@ -88,7 +88,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
                 if (response) {
                     if (response.success) {
-                        showInfoView(response.data);
+                        alert(response.data);
                     } else {
                         alert('No se encontró la persona.');
                     }
