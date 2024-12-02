@@ -47,13 +47,16 @@ window.addEventListener('DOMContentLoaded', () => {
         infoContainer.classList.remove('d-none');
         infoContainer.classList.add('d-flex');
 
+        videoContainer.classList.remove('d-flex');
+        videoContainer.classList.add('d-none');
+
         // Después de 8 segundos, oculta la información y vuelve al escáner
         setTimeout(() => {
             infoContainer.classList.remove('d-flex');
             infoContainer.classList.add('d-none');
 
             videoContainer.classList.remove('d-none');
-            infoContainer.classList.add('d-flex');
+            videoContainer.classList.add('d-flex');
         }, 8000);
     }
 
