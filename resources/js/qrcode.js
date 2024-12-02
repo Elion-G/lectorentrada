@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 },
                 error: function(xhr, status, error){
                     console.log(xhr);
-                    console.log(status);
+                    alert(status);
                     console.log(error);
                 }
             });
