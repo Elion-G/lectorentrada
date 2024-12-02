@@ -42,9 +42,13 @@ window.addEventListener('DOMContentLoaded', () => {
             const videoContainer = document.getElementById('video-container');
             const nombreFuncionario = document.getElementById('nombre-funcionario');
             const cedulaFuncionario = document.getElementById('cedula-funcionario');
+            const imagenFuncionario = document.getElementById('imagen-funcionario');
 
             nombreFuncionario.innerHTML = nombre;
             cedulaFuncionario.innerHTML = cedula;
+
+            imagenFuncionario.src = `/lectorffa/images/${cedula}.jpg`;
+            imagenFuncionario.alt = nombre;
 
             infoContainer.classList.remove('d-none');
             infoContainer.classList.add('d-flex');
@@ -62,6 +66,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 nombreFuncionario.innerHTML = '';
                 cedulaFuncionario.innerHTML = '';
+                imagenFuncionario.src = '';
+                imagenFuncionario.alt = '';
             }, 5000);
         } else {
             const infoContainer = document.getElementById('info-ingresado');

@@ -57,9 +57,9 @@
             </div>
         </div>
 
-        <div id="info-funcionario" class="mt-5 container flex-column justify-content-center align-items-center vw-100 d-none">
-            <h1 class="text-center mt-5">
-                Bienvenido/a
+        <div id="info-funcionario" class="mt-2 container flex-column justify-content-center align-items-center vw-100 d-none">
+            <h1 class="h1-block text-danger">
+                <img id="imagen-funcionario" src="" alt="" width="150" height="auto">
             </h1>
 
             <h1 id="nombre-funcionario" class="text-center text-danger mb-4">
