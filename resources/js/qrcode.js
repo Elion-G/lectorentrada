@@ -47,10 +47,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const response = await sendRequest(cinInput.value);
-
-                alert(`Respuesta JSON recibida:\n${JSON.stringify(response, null, 2)}`);
     
                 if (response && response.success) {
+
+                    alert(`Respuesta JSON recibida:\n${JSON.stringify(response, null, 2)}`);
+
                     const infoContainer = document.getElementById('info-funcionario');
                     const videoContainer = document.getElementById('video-container');
 
