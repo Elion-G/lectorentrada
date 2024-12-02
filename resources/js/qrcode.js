@@ -64,6 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         }
                     },
                     error: (xhr, status, error) => {
+                        alert(error.message);
                         reject(new Error(`Error: ${status}, ${error}`));
                     }
                 });
@@ -86,13 +87,7 @@ window.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await sendRequest(cinInput.value);
     
-                if (response) {
-                    if (response.success) {
-                        alert(response.data);
-                    } else {
-                        alert('No se encontró la persona.');
-                    }
-                }
+                alert(response);
             } catch (error) {
                 console.error('Error procesando la solicitud:', error);
                 alert('Hubo un problema al buscar al funcionario.');
