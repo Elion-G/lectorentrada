@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
             });
             return data;
         } catch (error) {
-            console.error('Error en la solicitud:', error);
+            alert('Error en la solicitud:', error);
             alert('Hubo un error al procesar la solicitud.');
             return null;
         }
