@@ -1,6 +1,7 @@
 import {Html5QrcodeScanner} from "html5-qrcode";
 
 window.addEventListener('DOMContentLoaded', () => {
+
     var lastResult, countResults = 0;
     const formElement = document.querySelector('form[action="buscar-funcionario"]');
     const cinInput = formElement.querySelector('input[name="cin"]');
