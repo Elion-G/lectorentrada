@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div id="info-ingresado" class="mt-5 container flex-column justify-content-center align-items-center vw-100 d-none">
+        <div id="info-ingresado" class="mt-2 container flex-column justify-content-center align-items-center vw-100 d-none">
             <h1 class="h1-block text-danger">
                 <i class="bi bi-ban"></i>
             </h1>
