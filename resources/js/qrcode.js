@@ -3,8 +3,6 @@ import {Html5QrcodeScanner} from "html5-qrcode";
 window.addEventListener('DOMContentLoaded', () => {
 
     var lastResult, countResults = 0;
-    const formElement = document.querySelector('form[action="buscar-funcionario"]');
-    const cinInput = formElement.querySelector('input[name="cin"]');
 
     async function sendRequest(cin) {
         try {
@@ -97,10 +95,9 @@ window.addEventListener('DOMContentLoaded', () => {
     async function onScanSuccess(decodeText, decodeResult) {
         if (decodeText !== lastResult) {
             lastResult = decodeText;
-            cinInput.value = decodeText;
 
             try {
-                const response = await sendRequest(cinInput.value);
+                const response = await sendRequest(decodeText);
     
                 if (response && response.success) {
 

@@ -37,16 +37,19 @@
                 font-size: 15rem; 
                 z-index:0 !important; 
             }
+
+            .btn-fullscreen {
+                position: absolute;
+                z-index:999 !important;
+            }
         </style>
 
     </head>
     <body>
-        
-        <form action="buscar-funcionario" method="POST">
-            @csrf
-            <input type="hidden" name="cin">
 
-        </form>
+        <div class="btn-fullscreen">
+            <button id="fullscreen-btn" class="btn btn-transparent text-dark"><i class="bi bi-arrows-angle-expand"></i></button>
+        </div>
 
         <div id="video-container" class="mt-5 container flex-column align-items-center d-flex">
             <div class="w-100" id="videoContainer">
@@ -140,6 +143,20 @@
                 })
             </script>
         @endif
+
+        <script>
+            window.addEventListener('load', () => {
+                document.getElementById("fullscreen-btn").addEventListener("click", function() {
+                    if (!document.fullscreenElement) {
+                        document.documentElement.requestFullscreen().catch((err) => {
+                            alert(`Error al intentar activar pantalla completa: ${err.message} (${err.name})`);
+                        });
+                    } else {
+                        document.exitFullscreen();
+                    }
+                });
+            })
+        </script>
 
     </body>
 </html>
