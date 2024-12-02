@@ -11,7 +11,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
             cinInput.value = decodeText;
 
-            formElement.submit();
+            $.ajax({
+                url: '/buscar-funcionario',
+                type: 'POST',
+                timeout:-1,
+                headers: {
+                    'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
+                },
+                data: JSON.stringify(
+                    {
+                        'cin' : cinInput.value
+                    }
+                ),
+                contentType: 'application/json',
+                success: function(response){
+                    console.log(response);
+                },
+                error: function(xhr, status, error){
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                }
+            });
+
+            // formElement.submit();
 
         }
     }

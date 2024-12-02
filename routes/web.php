@@ -10,3 +10,6 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::post('/buscar-funcionario', [searchController::class, 'search'])->name('search');
+Route::get('/bienvenido', function (){
+    return view('bienvenido');
+})->name('search');

@@ -19,8 +19,6 @@
 
         </form>
 
-        <img src="file:///C:/Users/elias.gonzalez/Desktop/funcionarios/7913.jpg" alt="">
-
         <div class="mt-5 container d-flex flex-column align-items-center">
             <div class="w-100" id="videoContainer">
                 <div id="videoElement" class="w-100"></div>

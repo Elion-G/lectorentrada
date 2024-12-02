@@ -4,7 +4,7 @@
     "src": "public/img/fondo_vertical.jpg"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DfIjQ0WI.css",
+    "file": "assets/app-DKD1RWES.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -20,7 +20,7 @@
     "isEntry": true
   },
   "resources/js/qrcode.js": {
-    "file": "assets/qrcode-DgtXON0t.js",
+    "file": "assets/qrcode-CcmIuGRK.js",
     "name": "qrcode",
     "src": "resources/js/qrcode.js",
     "isEntry": true
