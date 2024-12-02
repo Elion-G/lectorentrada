@@ -82,12 +82,10 @@ window.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await sendRequest(cinInput.value);
     
-                if (response) {
-                    if (response.success) {
-                        alert(response.data);
-                    } else {
-                        alert('No se encontró la persona.');
-                    }
+                if (response && response.success) {
+                    alert(`Nombre: ${response.nombre}, Cédula: ${response.cedula}`);
+                } else {
+                    alert(response?.message || 'No se encontró la persona.');
                 }
             } catch (error) {
                 console.error('Error procesando la solicitud:', error);

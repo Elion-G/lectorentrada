@@ -11,8 +11,6 @@ class searchController extends Controller
         try {
             $cin = $request->input('cin');
 
-            return response()->json(['nombre' => 'Elias', 'cedula' => '5266710']);
-
             $path = 'funcionarios.json';
 
             if (!Storage::exists($path)) {
@@ -29,9 +27,23 @@ class searchController extends Controller
             $nombre = $funcionario['Nombre'];
             $cedula = $cin;
 
+            // Verificar si se encontró el funcionario
             if ($funcionario) {
-                return response()->json(['nombre' => $nombre, 'cedula' => $cedula]);
+                $nombre = $funcionario['Nombre'];
+                $cedula = $cin;
+
+                return response()->json([
+                    'success' => true,
+                    'nombre' => $nombre,
+                    'cedula' => $cedula,
+                ]);
             }
+
+            // Si no se encontró el funcionario
+            return response()->json([
+                'success' => false,
+                'message' => 'Funcionario no encontrado',
+            ]);
         } catch (\Throwable $th) {
             return redirect()->route('welcome')->with([
                 'error' => 'QR inválido',
