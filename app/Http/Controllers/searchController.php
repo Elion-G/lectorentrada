@@ -28,7 +28,7 @@ class searchController extends Controller
             $cedula = $cin;
 
             if ($funcionario) {
-                return view('bienvenido', compact('nombre', 'cedula'));
+                return response()->json(['nombre' => $nombre, 'cedula' => $cedula]);
             }
         } catch (\Throwable $th) {
             return redirect()->route('welcome')->with([
