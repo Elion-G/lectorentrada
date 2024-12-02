@@ -46,7 +46,7 @@ class searchController extends Controller
             $cedula = $cin;
 
             // Verificar si ya está en llamados.json
-            $yaLlamado = collect($llamados)->firstWhere('CIN', $cin);
+            $yaLlamado = collect($llamados)->firstWhere('cedula', $cin);
 
             if ($yaLlamado) {
                 return response()->json([
