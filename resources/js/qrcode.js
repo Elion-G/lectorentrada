@@ -1,58 +1,25 @@
-import {Html5QrcodeScanner} from "html5-qrcode";
-
 window.addEventListener('DOMContentLoaded', () => {
-
     var lastResult, countResults = 0;
     const formElement = document.querySelector('form[action="buscar-funcionario"]');
     const cinInput = formElement.querySelector('input[name="cin"]');
-
-    // function onScanSuccess(decodeText, decodeResult) {
-    //     if (decodeText !== lastResult) {
-    //         lastResult = decodeText;
-
-    //         cinInput.value = decodeText;
-
-            // $.ajax({
-            //     url: '/buscar-funcionario',
-            //     type: 'POST',
-            //     timeout:-1,
-            //     headers: {
-            //         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content'),
-            //     },
-            //     data: JSON.stringify(
-            //         {
-            //             'cin' : cinInput.value
-            //         }
-            //     ),
-            //     contentType: 'application/json',
-            //     success: function(response){
-            //         alert(response);
-            //     },
-            //     error: function(xhr, status, error){
-            //         console.log(xhr);
-            //         alert(status);
-            //         console.log(error);
-            //     }
-            // });
-
-    //     }
-    // }
+    const videoContainer = document.getElementById('videoContainer');
+    const infoContainer = document.createElement('div'); // Contenedor para mostrar información dinámica
+    infoContainer.classList.add('info-container');
+    infoContainer.style.display = 'none';
+    document.body.appendChild(infoContainer); // Añadimos al cuerpo para mostrarlo dinámicamente
 
     async function sendRequest(cin) {
         try {
-
-            alert(JSON.stringify({ "cin" : cin }));
-
             const data = await new Promise((resolve, reject) => {
                 $.ajax({
                     url: "/lectorffa/buscar-funcionario",
                     method: "POST",
                     timeout: -1,
                     headers: {
-                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     contentType: 'application/json',
-                    data: JSON.stringify({ "cin" : cin }),
+                    data: JSON.stringify({ "cin": cin }),
                     success: (response) => {
                         resolve(response);
                     },
@@ -64,9 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
             });
             return data;
         } catch (error) {
-            // Convierte el error en un mensaje de texto y lo muestra
             alert(`Error en la solicitud: ${error.message}`);
-            console.error('Error completo:', error); // Imprime el error completo en la consola
             alert('Hubo un error al procesar la solicitud.');
             return null;
         }
@@ -80,23 +45,39 @@ window.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await sendRequest(cinInput.value);
 
-                alert(`Respuesta JSON recibida:\n${JSON.stringify(response, null, 2)}`);
-    
                 if (response && response.success) {
-                    alert(`Nombre: ${response.nombre}, Cédula: ${response.cedula}`);
+                    showInfo(response.nombre, response.cedula);
                 } else {
                     alert(response?.message || 'No se encontró la persona.');
                 }
             } catch (error) {
-                console.error('Error procesando la solicitud:', error);
                 alert('Hubo un problema al buscar al funcionario.');
             }
         }
     }
 
-    var html5Scanner = new Html5QrcodeScanner(
-        "videoElement", { fps:10, qrbox:500, rememberLastUsedCamera: true }
-    )
+    function showInfo(nombre, cedula) {
+        // Oculta el escáner
+        videoContainer.style.display = 'none';
+
+        // Muestra la información
+        infoContainer.innerHTML = `
+            <h1 class="text-center">Bienvenido/a</h1>
+            <h2 class="text-center">${nombre}</h2>
+            <h3 class="text-center">${cedula}</h3>
+        `;
+        infoContainer.style.display = 'block';
+
+        // Después de 8 segundos, oculta la información y vuelve al escáner
+        setTimeout(() => {
+            infoContainer.style.display = 'none';
+            videoContainer.style.display = 'block';
+        }, 8000);
+    }
+
+    const html5Scanner = new Html5QrcodeScanner(
+        "videoElement", { fps: 10, qrbox: 500, rememberLastUsedCamera: true }
+    );
 
     html5Scanner.render(onScanSuccess);
 });
