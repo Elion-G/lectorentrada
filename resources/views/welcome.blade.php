@@ -37,12 +37,16 @@
                 font-size: 15rem; 
                 z-index:0 !important; 
             }
+
+            .btn-fullscreen {
+                position: absolute;
+            }
         </style>
 
     </head>
     <body>
 
-        <div class="btn-fullscreen text-center">
+        <div class="btn-fullscreen">
             <button id="fullscreen-btn" class="btn btn-transparent text-dark"><i class="bi bi-arrows-angle-expand"></i></button>
         </div>
 
