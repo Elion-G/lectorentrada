@@ -11,6 +11,8 @@ class searchController extends Controller
         try {
             $cin = $request->input('cin');
 
+            return response()->json(['nombre' => 'Elias', 'cedula' => '5266710']);
+
             $path = 'funcionarios.json';
 
             if (!Storage::exists($path)) {
