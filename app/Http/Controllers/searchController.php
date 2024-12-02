@@ -24,14 +24,14 @@ class searchController extends Controller
 
             $funcionario = collect($funcionarios)->firstWhere('CIN', $cin);
 
-            $nombre = $funcionario['Nombre'];
-            $cedula = $cin;
-
             return response()->json([
                 'success' => true,
                 'nombre' => 'ElinGon',
                 'cedula' => '123456',
             ]);
+
+            $nombre = $funcionario['Nombre'];
+            $cedula = $cin;
 
             // Verificar si se encontró el funcionario
             if ($funcionario) {
