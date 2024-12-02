@@ -14,7 +14,7 @@
         <style>
             @font-face {
                 font-family: "Amplesoft_Bold";
-                src: url("/fonts/AMPLESOFT_BOLD.ttf");
+                src: url("lectorffa/fonts/AMPLESOFT_BOLD.ttf");
             }
 
             * {
