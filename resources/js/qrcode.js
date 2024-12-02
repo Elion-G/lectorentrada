@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const data = await new Promise((resolve, reject) => {
                 $.ajax({
-                    url: "/buscar-funcionario",
+                    url: "/lectorffa/buscar-funcionario",
                     method: "GET",
                     timeout: -1,
                     headers: {
@@ -56,7 +56,12 @@ window.addEventListener('DOMContentLoaded', () => {
                     contentType: 'application/json',
                     data: JSON.stringify({ cin }),
                     success: (response) => {
-                        alert(response);
+                        // Si el servidor devuelve un string en lugar de JSON
+                        if (typeof response === 'string') {
+                            resolve(JSON.parse(response));
+                        } else {
+                            resolve(response);
+                        }
                     },
                     error: (xhr, status, error) => {
                         alert(error.message);
