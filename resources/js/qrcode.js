@@ -38,32 +38,60 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function cambioDeEstado(nombre, cedula) {
-        const infoContainer = document.getElementById('info-funcionario');
-        const videoContainer = document.getElementById('video-container');
-        const nombreFuncionario = document.getElementById('nombre-funcionario');
-        const cedulaFuncionario = document.getElementById('cedula-funcionario');
+    function cambioDeEstado(nombre, cedula, nuevo) {
+        if (nuevo) {
+            const infoContainer = document.getElementById('info-funcionario');
+            const videoContainer = document.getElementById('video-container');
+            const nombreFuncionario = document.getElementById('nombre-funcionario');
+            const cedulaFuncionario = document.getElementById('cedula-funcionario');
 
-        nombreFuncionario.innerHTML = nombre;
-        cedulaFuncionario.innerHTML = cedula;
+            nombreFuncionario.innerHTML = nombre;
+            cedulaFuncionario.innerHTML = cedula;
 
-        infoContainer.classList.remove('d-none');
-        infoContainer.classList.add('d-flex');
+            infoContainer.classList.remove('d-none');
+            infoContainer.classList.add('d-flex');
 
-        videoContainer.classList.remove('d-flex');
-        videoContainer.classList.add('d-none');
+            videoContainer.classList.remove('d-flex');
+            videoContainer.classList.add('d-none');
 
-        // Después de 8 segundos, oculta la información y vuelve al escáner
-        setTimeout(() => {
-            infoContainer.classList.remove('d-flex');
-            infoContainer.classList.add('d-none');
+            // Después de 8 segundos, oculta la información y vuelve al escáner
+            setTimeout(() => {
+                infoContainer.classList.remove('d-flex');
+                infoContainer.classList.add('d-none');
 
-            videoContainer.classList.remove('d-none');
-            videoContainer.classList.add('d-flex');
+                videoContainer.classList.remove('d-none');
+                videoContainer.classList.add('d-flex');
 
-            nombreFuncionario.innerHTML = '';
-            cedulaFuncionario.innerHTML = '';
-        }, 5000);
+                nombreFuncionario.innerHTML = '';
+                cedulaFuncionario.innerHTML = '';
+            }, 5000);
+        } else {
+            const infoContainer = document.getElementById('info-ingresado');
+            const videoContainer = document.getElementById('video-container');
+            const nombreIngresado = document.getElementById('nombre-ingresado');
+            const cedulaIngresado = document.getElementById('cedula-ingresado');
+
+            nombreIngresado.innerHTML = nombre;
+            cedulaIngresado.innerHTML = cedula;
+
+            infoContainer.classList.remove('d-none');
+            infoContainer.classList.add('d-flex');
+
+            videoContainer.classList.remove('d-flex');
+            videoContainer.classList.add('d-none');
+
+            // Después de 8 segundos, oculta la información y vuelve al escáner
+            setTimeout(() => {
+                infoContainer.classList.remove('d-flex');
+                infoContainer.classList.add('d-none');
+
+                videoContainer.classList.remove('d-none');
+                videoContainer.classList.add('d-flex');
+
+                nombreIngresado.innerHTML = '';
+                cedulaIngresado.innerHTML = '';
+            }, 5000);
+        }
     }
 
     async function onScanSuccess(decodeText, decodeResult) {
@@ -76,10 +104,15 @@ window.addEventListener('DOMContentLoaded', () => {
     
                 if (response && response.success) {
 
-                    cambioDeEstado(response.nombre, response.cedula);
+                    cambioDeEstado(response.nombre, response.cedula, true);
 
                 } else {
-                    alert(response?.message || 'No se encontró la persona.');
+                    if (response && response.message) {
+                        cambioDeEstado(response.nombre, response.cedula, false);
+                    } else {
+                        alert(response?.message || 'No se encontró la persona.');
+                    }
+                    
                 }
             } catch (error) {
                 console.error('Error procesando la solicitud:', error);

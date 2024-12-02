@@ -11,42 +11,67 @@ class searchController extends Controller
         try {
             $cin = $request->input('cin');
 
-            $path = 'funcionarios.json';
+            // Rutas de los archivos JSON
+            $funcionariosPath = 'funcionarios.json';
+            $llamadosPath = 'llamados.json';
 
-            if (!Storage::exists($path)) {
+            // Verificar si los archivos existen
+            if (!Storage::exists($funcionariosPath)) {
                 return response()->json([
                     'success' => false,
-                    'message' => "Archivo no encontrado",
+                    'message' => "Archivo de funcionarios no encontrado",
                 ]);
             }
 
-            $funcionarios = json_decode(Storage::get($path), true);
+            if (!Storage::exists($llamadosPath)) {
+                // Crear el archivo "llamados.json" si no existe
+                Storage::put($llamadosPath, json_encode([]));
+            }
+
+            $funcionarios = json_decode(Storage::get($funcionariosPath), true);
+            $llamados = json_decode(Storage::get($llamadosPath), true);
 
             $funcionario = collect($funcionarios)->firstWhere('CIN', $cin);
+
+            if (!$funcionario) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Funcionario no encontrado',
+                ]);
+            }
+
+            $nombre = $funcionario['Nombre'];
+            $apellido = $funcionario['Apellido'];
+            $nombre_completo = $nombre . ' ' . $apellido;
+            $cedula = $cin;
+
+            // Verificar si ya está en llamados.json
+            $yaLlamado = collect($llamados)->firstWhere('CIN', $cin);
+
+            if ($yaLlamado) {
+                return response()->json([
+                    'success' => false,
+                    'nombre' => $nombre_completo,
+                    'cedula' => $cedula,
+                    'message' => 'ya ingresó.',
+                ]);
+            }
+
+            // Agregar al funcionario a "llamados.json"
+            $llamados[] = [
+                'nombre' => $nombre_completo,
+                'cedula' => $cedula,
+                'LlamadoEn' => now()->toDateTimeString(), // Registrar la fecha/hora del llamado
+            ];
+            Storage::put($llamadosPath, json_encode($llamados, JSON_PRETTY_PRINT));
 
             $nombre = $funcionario['Nombre'];
             $cedula = $cin;
 
-            // Verificar si se encontró el funcionario
-            if ($funcionario) {
-                $nombre = $funcionario['Nombre'];
-                $apellido = $funcionario['Apellido'];
-
-                $nombre_completo = $nombre . ' ' . $apellido;
-
-                $cedula = $cin;
-
-                return response()->json([
-                    'success' => true,
-                    'nombre' => $nombre_completo,
-                    'cedula' => $cedula,
-                ]);
-            }
-
-            // Si no se encontró el funcionario
             return response()->json([
-                'success' => false,
-                'message' => 'Funcionario no encontrado',
+                'success' => true,
+                'nombre' => $nombre_completo,
+                'cedula' => $cedula,
             ]);
         } catch (\Throwable $th) {
             return response()->json([
