@@ -26,8 +26,8 @@ class searchController extends Controller
 
             return response()->json([
                 'success' => true,
-                'nombre' => 'ElinGon',
-                'cedula' => '123456',
+                'nombre' => $funcionario,
+                'cedula' => $cin,
             ]);
 
             $nombre = $funcionario['Nombre'];
