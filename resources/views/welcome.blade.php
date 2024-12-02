@@ -40,6 +40,7 @@
 
             .btn-fullscreen {
                 position: absolute;
+                z-index:999 !important;
             }
         </style>
 
@@ -144,15 +145,17 @@
         @endif
 
         <script>
-            document.getElementById("fullscreen-btn").addEventListener("click", function() {
-                if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen().catch((err) => {
-                        alert(`Error al intentar activar pantalla completa: ${err.message} (${err.name})`);
-                    });
-                } else {
-                    document.exitFullscreen();
-                }
-            });
+            window.addEventListener('load', () => {
+                document.getElementById("fullscreen-btn").addEventListener("click", function() {
+                    if (!document.fullscreenElement) {
+                        document.documentElement.requestFullscreen().catch((err) => {
+                            alert(`Error al intentar activar pantalla completa: ${err.message} (${err.name})`);
+                        });
+                    } else {
+                        document.exitFullscreen();
+                    }
+                });
+            })
         </script>
 
     </body>
