@@ -45,7 +45,7 @@
         </style>
 
     </head>
-    <body>
+    <body id="body">
 
         <div class="btn-fullscreen">
             <button id="fullscreen-btn" class="btn btn-transparent text-dark"><i class="bi bi-arrows-angle-expand"></i></button>
@@ -76,7 +76,7 @@
         </div>
 
         <div id="info-ingresado" class="mt-2 container flex-column justify-content-center align-items-center vw-100 d-none">
-            <h1 class="h1-block text-danger">
+            <h1 class="h1-block">
                 <i class="bi bi-ban"></i>
             </h1>
 
@@ -84,7 +84,7 @@
                 
             </h1>
 
-            <h1 id="mensaje-ingresado" class="text-center mb-5 w-100 text-danger">
+            <h1 id="mensaje-ingresado" class="text-center mb-5 w-100">
                 Ya ingresó
             </h1>
 

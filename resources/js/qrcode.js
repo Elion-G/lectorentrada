@@ -74,9 +74,12 @@ window.addEventListener('DOMContentLoaded', () => {
             const videoContainer = document.getElementById('video-container');
             const nombreIngresado = document.getElementById('nombre-ingresado');
             const cedulaIngresado = document.getElementById('cedula-ingresado');
+            const bodyContainer = document.getElementById('body');
 
             nombreIngresado.innerHTML = nombre;
             cedulaIngresado.innerHTML = cedula;
+
+            bodyContainer.classList.add('bg-danger');
 
             infoContainer.classList.remove('d-none');
             infoContainer.classList.add('d-flex');
@@ -86,6 +89,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
             // Después de 8 segundos, oculta la información y vuelve al escáner
             setTimeout(() => {
+                bodyContainer.classList.remove('bg-danger');
+
                 infoContainer.classList.remove('d-flex');
                 infoContainer.classList.add('d-none');
 
