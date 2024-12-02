@@ -70,7 +70,9 @@ window.addEventListener('DOMContentLoaded', () => {
             });
             return data;
         } catch (error) {
-            alert('Error en la solicitud:', error);
+            // Convierte el error en un mensaje de texto y lo muestra
+            alert(`Error en la solicitud: ${error.message}`);
+            console.error('Error completo:', error); // Imprime el error completo en la consola
             alert('Hubo un error al procesar la solicitud.');
             return null;
         }
