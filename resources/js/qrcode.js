@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 ),
                 contentType: 'application/json',
                 success: function(response){
-                    console.log(response);
+                    alert(response);
                 },
                 error: function(xhr, status, error){
                     console.log(xhr);
