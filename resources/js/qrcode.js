@@ -56,12 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     contentType: 'application/json',
                     data: JSON.stringify({ cin }),
                     success: (response) => {
-                        // Si el servidor devuelve un string en lugar de JSON
-                        if (typeof response === 'string') {
-                            resolve(JSON.parse(response));
-                        } else {
-                            resolve(response);
-                        }
+                        resolve(response);
                     },
                     error: (xhr, status, error) => {
                         alert(error.message);
@@ -87,7 +82,13 @@ window.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await sendRequest(cinInput.value);
     
-                alert(response);
+                if (response) {
+                    if (response.success) {
+                        alert(response.data);
+                    } else {
+                        alert('No se encontró la persona.');
+                    }
+                }
             } catch (error) {
                 console.error('Error procesando la solicitud:', error);
                 alert('Hubo un problema al buscar al funcionario.');
