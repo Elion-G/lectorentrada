@@ -44,6 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 $.ajax({
                     url: "/buscar-funcionario",
                     method: "GET",
+                    timeout: -1,
                     headers: {
                         "Content-Type": "application/json",
                         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
