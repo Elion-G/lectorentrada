@@ -45,10 +45,11 @@ class searchController extends Controller
                 'message' => 'Funcionario no encontrado',
             ]);
         } catch (\Throwable $th) {
-            return redirect()->route('welcome')->with([
-                'error' => 'QR inválido',
-                'destination' => ''
-            ]);
+            return response()->json([
+                'success' => false,
+                'message' => 'Error interno del servidor',
+                'error' => $th->getMessage(),
+            ], 500);
         }
     }
 }
