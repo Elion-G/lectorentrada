@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     var html5Scanner = new Html5QrcodeScanner(
-        "videoElement", { fps:10, qrbox:500, rememberLastUsedCamera: true }
+        "videoElement", { fps:20, qrbox:450, rememberLastUsedCamera: true }
     )
 
     html5Scanner.render(onScanSuccess);
