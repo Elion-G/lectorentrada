@@ -40,6 +40,23 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function cambioDeEstado() {
+        const infoContainer = document.getElementById('info-funcionario');
+        const videoContainer = document.getElementById('video-container');
+
+        infoContainer.classList.remove('d-none');
+        infoContainer.classList.add('d-flex');
+
+        // Después de 8 segundos, oculta la información y vuelve al escáner
+        setTimeout(() => {
+            infoContainer.classList.remove('d-flex');
+            infoContainer.classList.add('d-none');
+
+            videoContainer.classList.remove('d-none');
+            infoContainer.classList.add('d-flex');
+        }, 8000);
+    }
+
     async function onScanSuccess(decodeText, decodeResult) {
         if (decodeText !== lastResult) {
             lastResult = decodeText;
@@ -52,20 +69,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
                     alert(`Respuesta JSON recibida:\n${JSON.stringify(response, null, 2)}`);
 
-                    const infoContainer = document.getElementById('info-funcionario');
-                    const videoContainer = document.getElementById('video-container');
-
-                    infoContainer.classList.remove('d-none');
-                    infoContainer.classList.add('d-flex');
-
-                    // Después de 8 segundos, oculta la información y vuelve al escáner
-                    setTimeout(() => {
-                        infoContainer.classList.remove('d-flex');
-                        infoContainer.classList.add('d-none');
-
-                        videoContainer.classList.remove('d-none');
-                        infoContainer.classList.add('d-flex');
-                    }, 8000);
+                    cambioDeEstado();
 
                 } else {
                     alert(response?.message || 'No se encontró la persona.');
