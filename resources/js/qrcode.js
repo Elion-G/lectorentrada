@@ -70,36 +70,72 @@ window.addEventListener('DOMContentLoaded', () => {
                 imagenFuncionario.alt = '';
             }, 5000);
         } else {
-            const infoContainer = document.getElementById('info-ingresado');
-            const videoContainer = document.getElementById('video-container');
-            const nombreIngresado = document.getElementById('nombre-ingresado');
-            const cedulaIngresado = document.getElementById('cedula-ingresado');
-            const bodyContainer = document.getElementById('body');
+            if (nombre && cedula) {
+                const infoContainer = document.getElementById('info-ingresado');
+                const videoContainer = document.getElementById('video-container');
+                const nombreIngresado = document.getElementById('nombre-ingresado');
+                const cedulaIngresado = document.getElementById('cedula-ingresado');
+                const bodyContainer = document.getElementById('body');
 
-            nombreIngresado.innerHTML = nombre;
-            cedulaIngresado.innerHTML = cedula;
+                nombreIngresado.innerHTML = nombre;
+                cedulaIngresado.innerHTML = cedula;
 
-            bodyContainer.classList.add('bg-danger');
+                bodyContainer.classList.add('bg-danger');
 
-            infoContainer.classList.remove('d-none');
-            infoContainer.classList.add('d-flex');
+                infoContainer.classList.remove('d-none');
+                infoContainer.classList.add('d-flex');
 
-            videoContainer.classList.remove('d-flex');
-            videoContainer.classList.add('d-none');
+                videoContainer.classList.remove('d-flex');
+                videoContainer.classList.add('d-none');
 
-            // Después de 8 segundos, oculta la información y vuelve al escáner
-            setTimeout(() => {
-                bodyContainer.classList.remove('bg-danger');
+                // Después de 8 segundos, oculta la información y vuelve al escáner
+                setTimeout(() => {
+                    bodyContainer.classList.remove('bg-danger');
 
-                infoContainer.classList.remove('d-flex');
-                infoContainer.classList.add('d-none');
+                    infoContainer.classList.remove('d-flex');
+                    infoContainer.classList.add('d-none');
 
-                videoContainer.classList.remove('d-none');
-                videoContainer.classList.add('d-flex');
+                    videoContainer.classList.remove('d-none');
+                    videoContainer.classList.add('d-flex');
 
-                nombreIngresado.innerHTML = '';
+                    nombreIngresado.innerHTML = '';
+                    cedulaIngresado.innerHTML = '';
+                }, 4000);
+            } else {
+                const infoContainer = document.getElementById('info-ingresado');
+                const videoContainer = document.getElementById('video-container');
+                const nombreIngresado = document.getElementById('nombre-ingresado');
+                const mensajeIngresado = document.getElementById('mensaje-ingresado');
+                const cedulaIngresado = document.getElementById('cedula-ingresado');
+                const bodyContainer = document.getElementById('body');
+
+                nombreIngresado.innerHTML = 'No se encuentra';
+                mensajeIngresado.innerHTML = 'en el listado';
                 cedulaIngresado.innerHTML = '';
-            }, 4000);
+
+                bodyContainer.classList.add('bg-danger');
+
+                infoContainer.classList.remove('d-none');
+                infoContainer.classList.add('d-flex');
+
+                videoContainer.classList.remove('d-flex');
+                videoContainer.classList.add('d-none');
+
+                // Después de 8 segundos, oculta la información y vuelve al escáner
+                setTimeout(() => {
+                    bodyContainer.classList.remove('bg-danger');
+
+                    infoContainer.classList.remove('d-flex');
+                    infoContainer.classList.add('d-none');
+
+                    videoContainer.classList.remove('d-none');
+                    videoContainer.classList.add('d-flex');
+
+                    nombreIngresado.innerHTML = '';
+                    cedulaIngresado.innerHTML = '';
+                }, 4000);
+            }
+            
         }
     }
 
