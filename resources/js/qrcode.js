@@ -83,6 +83,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 cedulaIngresado.innerHTML = cedula;
 
                 bodyContainer.classList.add('bg-danger');
+                infoContainer.classList.add('bg-danger');
 
                 infoContainer.classList.remove('d-none');
                 infoContainer.classList.add('d-flex');
@@ -93,6 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 // Después de 8 segundos, oculta la información y vuelve al escáner
                 setTimeout(() => {
                     bodyContainer.classList.remove('bg-danger');
+                    infoContainer.classList.remove('bg-danger');
 
                     infoContainer.classList.remove('d-flex');
                     infoContainer.classList.add('d-none');
@@ -116,6 +118,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 cedulaIngresado.innerHTML = '';
 
                 bodyContainer.classList.add('bg-dark');
+                infoContainer.classList.add('bg-dark');
 
                 infoContainer.classList.remove('d-none');
                 infoContainer.classList.add('d-flex');
@@ -126,6 +129,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 // Después de 8 segundos, oculta la información y vuelve al escáner
                 setTimeout(() => {
                     bodyContainer.classList.remove('bg-dark');
+                    infoContainer.classList.remove('bg-dark');
 
                     infoContainer.classList.remove('d-flex');
                     infoContainer.classList.add('d-none');
