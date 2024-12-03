@@ -99,7 +99,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 nombreIngresado.innerHTML = '';
                 cedulaIngresado.innerHTML = '';
-            }, 5000);
+            }, 4000);
         }
     }
 
