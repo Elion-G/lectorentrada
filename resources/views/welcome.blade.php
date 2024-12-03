@@ -55,8 +55,8 @@
 
             <div class="mt-5 container flex-column align-items-center d-flex">
                 <div class="form-group">
-                    <label for="buscador" class="form-label" style="font-size: 1.5rem !important">Buscador</label>
-                    <div class="input-group mb-3" style="font-size: 1.5rem !important">
+                    <label for="buscador" class="form-label" style="font-size: 2rem !important">Buscador</label>
+                    <div class="input-group mb-3" style="font-size: 2rem !important">
                         <input id="buscador" type="text" class="form-control" placeholder="Cédula" aria-label="Cédula" aria-describedby="button-addon2">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
                     </div>
