@@ -134,9 +134,9 @@ window.addEventListener('DOMContentLoaded', () => {
     )
 
     html5Scanner.render(onScanSuccess);
-});
 
-window.addEventListener('DOMContentLoaded', () => {
+    // Buscador
+
     const inputBuscador = document.getElementById('buscador');
     const btnBuscador = document.getElementById('button-addon2');
 
@@ -170,5 +170,4 @@ window.addEventListener('DOMContentLoaded', () => {
         inputBuscador.value = '';
 
     })
-
 });
