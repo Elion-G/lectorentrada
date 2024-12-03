@@ -130,8 +130,45 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     var html5Scanner = new Html5QrcodeScanner(
-        "videoElement", { fps:20, qrbox:450, rememberLastUsedCamera: true }
+        "videoElement", { fps:20, qrbox:350, rememberLastUsedCamera: true }
     )
 
     html5Scanner.render(onScanSuccess);
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const inputBuscador = document.getElementById('buscador');
+    const btnBuscador = document.getElementById('button-addon2');
+
+    async function searchForCI(decodeText) {
+        try {
+            const response = await sendRequest(decodeText);
+
+            if (response && response.success) {
+
+                cambioDeEstado(response.nombre, response.cedula, true);
+
+            } else {
+                if (response && response.message) {
+                    cambioDeEstado(response.nombre, response.cedula, false);
+                } else {
+                    alert(response?.message || 'No se encontró la persona.');
+                }
+                
+            }
+        } catch (error) {
+            console.error('Error procesando la solicitud:', error);
+            alert('Hubo un problema al buscar al funcionario.');
+        }
+    }
+
+    btnBuscador.addEventListener('click', () => {
+        let cedula = inputBuscador.value;
+
+        searchForCI(cedula);
+
+        inputBuscador.value = '';
+
+    })
+
 });
