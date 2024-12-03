@@ -164,10 +164,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
     btnBuscador.addEventListener('click', () => {
         let cedula = inputBuscador.value;
-
         searchForCI(cedula);
-
         inputBuscador.value = '';
 
-    })
+    });
+
+    inputBuscador.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            let cedula = inputBuscador.value;
+            searchForCI(cedula);
+            inputBuscador.value = '';
+        }
+    });
 });

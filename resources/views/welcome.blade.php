@@ -51,17 +51,18 @@
             <button id="fullscreen-btn" class="btn btn-transparent text-dark"><i class="bi bi-arrows-angle-expand"></i></button>
         </div>
 
-        <div class="mt-5 container flex-column align-items-center d-flex">
-            <div class="form-group">
-                <label for="buscador" class="form-label">Buscador</label>
-                <div class="input-group mb-3">
-                    <input id="buscador" type="text" class="form-control" placeholder="Cédula" aria-label="Cédula" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+        <div id="video-container" class="mt-5 container flex-column align-items-center d-flex">
+
+            <div class="mt-5 container flex-column align-items-center d-flex">
+                <div class="form-group">
+                    <label for="buscador" class="form-label" style="font-size: 1.5rem !important">Buscador</label>
+                    <div class="input-group mb-3" style="font-size: 1.5rem !important">
+                        <input id="buscador" type="text" class="form-control" placeholder="Cédula" aria-label="Cédula" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div id="video-container" class="mt-5 container flex-column align-items-center d-flex">
             <div class="w-100" id="videoContainer">
                 <div id="videoElement" class="w-100"></div>
             </div>
@@ -76,7 +77,7 @@
                 
             </h1>
 
-            <h2 id="cedula-funcionario" class="text-center mb-4">
+            <h2 id="cedula-funcionario" class="text-center mb-2">
                 
             </h2>
 
